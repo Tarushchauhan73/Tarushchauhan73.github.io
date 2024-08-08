@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
     <style>
-        /* Your existing CSS styles */
+        /* Setting the background image for the body */
         body {
-            background-color: #f4f4f4;
+            background-image: url('https://images.app.goo.gl/dapBa2KJm72zDGpu8');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             font-family: Arial, sans-serif;
         }
         .form-container {
-            background-color: silver;
+            background-color: rgba(192, 192, 192, 0.8); /* Semi-transparent silver background */
             padding: 20px;
             border-radius: 8px;
             max-width: 500px;
@@ -82,6 +85,13 @@
         button:hover {
             background-color: darkblue;
         }
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            color: green;
+            font-size: 20px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -131,6 +141,9 @@
             <button type="submit">Submit</button>
         </div>
     </form>
+    <div class="thank-you-message" id="thank-you-message">
+        Thank you for your registration!
+    </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
@@ -203,6 +216,12 @@ function togglePasswordVisibility() {
     const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
     passwordField.setAttribute('type', type);
 }
+
+document.getElementById('my-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    document.getElementById('my-form').style.display = 'none';
+    document.getElementById('thank-you-message').style.display = 'block';
+});
 </script>
 
 </body>
